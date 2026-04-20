@@ -4,9 +4,10 @@ import {
   About,
   Projects,
   Experience,
-  Testimonials,
+  // Testimonials,
   Contact,
 } from "@/sections";
+import { Footer } from "@/layout/Footer";
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
         <About />
         <Projects />
         <Experience />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Contact />
       </main>
+
+      <Footer />
     </div>
   );
 }
