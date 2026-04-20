@@ -14,7 +14,7 @@ export const LinkButton = ({
   };
 
   const baseClasses =
-    "relative overflow-hidden px-6 py-3 w-full text-base rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visibe:ring-primary transition-colors duration-300";
+    "relative overflow-hidden px-6 py-3 w-full text-base rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors duration-300";
 
   const typeClasses = {
     default: "bg-white text-primary hover:text-white hover:bg-primary",

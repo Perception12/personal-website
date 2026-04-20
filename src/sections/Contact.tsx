@@ -78,11 +78,20 @@ export const Contact = () => {
         message: "Message sent successfully! I'll get back to you soon.",
       });
       setFormData({ name: "", email: "", message: "" });
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("EmailJS error:", err);
+
+      let message = "Failed to send message. Please try again later.";
+
+      if (typeof err === "object" && err !== null && "text" in err) {
+        message = String((err).text);
+      } else if (err instanceof Error) {
+        message = err.message;
+      }
+
       setSubmitStatus({
         type: "error",
-        message: err.text || "Failed to send message. Please try again later.",
+        message,
       });
     } finally {
       setIsLoading(false);
@@ -108,7 +117,8 @@ export const Contact = () => {
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            Have an idea or problem you’re exploring? I’m always open to discussing how AI and well-designed systems can bring it to life.
+            Have an idea or problem you’re exploring? I’m always open to
+            discussing how AI and well-designed systems can bring it to life.
           </p>
         </div>
 
@@ -244,7 +254,8 @@ export const Contact = () => {
                 <span className="font-medium">Currently Available</span>
               </div>
               <p className="text-muted-foreground text-sm">
-                Open to opportunities and collaborations in AI engineering, intelligent systems, and applied machine learning.
+                Open to opportunities and collaborations in AI engineering,
+                intelligent systems, and applied machine learning.
               </p>
             </div>
           </div>
