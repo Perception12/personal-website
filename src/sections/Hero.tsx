@@ -95,8 +95,8 @@ export const Hero = () => {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg">
+            <div className="flex flex-wrap justify-center w-full md:justify-start items-center gap-4 animate-fade-in animation-delay-300">
+              <Button size="lg" onClick={() => window.location.href="#contact"}>
                 Contact Me
                 <HugeiconsIcon icon={ArrowRight02Icon} className="w-5 h-5" />
               </Button>
