@@ -2,10 +2,12 @@ export const Button = ({
   className = "",
   size = "default",
   children,
+  type,
   ...props
 }: {
   className?: string;
   size?: "sm" | "default" | "lg";
+  type?: "submit" | "reset" | "button" | undefined;
   children?: React.ReactNode;
 }) => {
   const baseClasses =
@@ -18,7 +20,7 @@ export const Button = ({
   };
     const classes = `${baseClasses} ${sizeClasses[size]} ${className}`;
   return (
-    <button className={classes} {...props} >
+    <button className={classes} type={type} {...props} >
       <span className="relative flex items-center justify-center gap-2">
         {children}
       </span>
