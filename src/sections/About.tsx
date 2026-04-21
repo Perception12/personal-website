@@ -1,4 +1,5 @@
 import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 const highlights = [
   {
@@ -31,19 +32,21 @@ const highlights = [
 ];
 
 export const About = () => {
+  const { ref, isVisible } = useInView();
+
   return (
     <section className="py-32 relative overflow-hidden" id="about">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left Column */}
           <div className="space-y-8">
-            <div className="animate-fade-in">
+            <div ref={ref} className={isVisible ? "animate-fade-in": ""}>
               <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
                 About Me
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
+            <h2 className={`text-4xl md:text-5xl font-bold leading-tight ${isVisible ? "animate-fade-in animation-delay-100" : ""} text-secondary-foreground`}>
               From concepts
               <span className="font-serif italic font-normal text-white">
                 {" "}

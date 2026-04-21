@@ -13,7 +13,10 @@ import { ChevronDown } from "lucide-react";
 export const Hero = () => {
   const socialLinks = [
     { icon: Github, href: "https://github.com/Perception12" },
-    { icon: Linkedin, href: "https://linkedin.com/in/kehinde-adejumobi-05799b1bb" },
+    {
+      icon: Linkedin,
+      href: "https://linkedin.com/in/kehinde-adejumobi-05799b1bb",
+    },
     { icon: NewTwitterIcon, href: "https://x.com/hey_itskenny" },
   ];
 
@@ -96,15 +99,20 @@ export const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap justify-center w-full md:justify-start items-center gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg" onClick={() => window.location.href="#contact"}>
+              <Button
+                size="lg"
+                onClick={() => (window.location.href = "#contact")}
+              >
                 Contact Me
                 <HugeiconsIcon icon={ArrowRight02Icon} className="w-5 h-5" />
               </Button>
 
-              <AnimatedBorderButton>
-                <HugeiconsIcon icon={Download01Icon} className="w-5 h-5" />{" "}
-                Download CV
-              </AnimatedBorderButton>
+              <a href="/cv.pdf" download="Kehinde_Adejumobi_CV.pdf">
+                <AnimatedBorderButton>
+                  <HugeiconsIcon icon={Download01Icon} className="w-5 h-5" />{" "}
+                  Download CV
+                </AnimatedBorderButton>
+              </a>
             </div>
 
             {/* Social Links */}
@@ -168,7 +176,6 @@ export const Hero = () => {
                   <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
                     {skill}
                   </span>
-
                 </div>
               ))}
             </div>
