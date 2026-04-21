@@ -79,7 +79,7 @@ export const Navbar = () => {
         <>
           {/* Overlay */}
           <div
-            className="fixed inset-0 bg-background/50 backdrop-blur-sm"
+            className="absolute left-0 top-0 w-screen h-screen bg-black/50 backdrop-blur-3xl"
             onClick={() => setIsMenuOpen(false)}
           />
 
