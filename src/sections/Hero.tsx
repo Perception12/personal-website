@@ -9,15 +9,13 @@ import {
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { Button } from "@/components/Button";
 import { ChevronDown } from "lucide-react";
+import { socials } from "@/data/social";
 /* eslint-disable react-hooks/purity */
 export const Hero = () => {
   const socialLinks = [
-    { icon: Github, href: "https://github.com/Perception12" },
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/in/kehinde-adejumobi-05799b1bb",
-    },
-    { icon: NewTwitterIcon, href: "https://x.com/hey_itskenny" },
+    { icon: Github, href: socials.github },
+    { icon: Linkedin, href: socials.linkedin },
+    { icon: NewTwitterIcon, href: socials.twitter },
   ];
 
   const skills = [

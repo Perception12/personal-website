@@ -1,10 +1,11 @@
 import { Github, Linkedin, NewTwitterIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { socials } from "@/data/social";
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: NewTwitterIcon, href: "#", label: "Twitter" },
+  { icon: Github, href: socials.github, label: "GitHub" },
+  { icon: Linkedin, href: socials.linkedin, label: "LinkedIn" },
+  { icon: NewTwitterIcon, href: socials.twitter, label: "Twitter" },
 ];
 
 export const Footer = () => {
@@ -30,6 +31,7 @@ export const Footer = () => {
               <a
                 key={social.label}
                 href={social.href}
+                target="_blank"
                 aria-label={social.label}
                 className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
               >

@@ -8,103 +8,9 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/data/projects";
 
 export const Projects = () => {
-  const projects = [
-    {
-      title: "Traffic Control & Violation Detection System",
-      description:
-        "A distributed system for detecting traffic violations using embedded sensors, with cloud-based logging and a real-time dashboard.",
-
-      image: "/projects/traffic_control_system.png",
-
-      tags: ["IoT", "Embedded Systems", "Cloud", "Next.js"],
-
-      github: "https://github.com/Perception12/Raspberry-Pi-Violation-Capture",
-
-      links: {
-        demo: null,
-        video: null,
-        blog: null,
-        gallery: "/projects/traffic-gallery", // local images
-      },
-    },
-    {
-      title: "Reinforcement Learning for Traffic Optimization",
-      description:
-        "A reinforcement learning system using SUMO simulations to optimize traffic flow and reduce congestion.",
-
-      image: "/projects/rl_traffic_control.png",
-
-      tags: ["Reinforcement Learning", "Python", "SUMO"],
-
-      github: "https://github.com/Perception12/traffic-optimization-RL",
-
-      links: {
-        demo: null,
-        video: null,
-        blog: null,
-        gallery: null,
-      },
-    },
-    {
-      title: "LitSense",
-      description:
-        "An AI-powered literary recommendation and decision-support system designed to help users make informed book-buying decisions.",
-
-      image: "/projects/litsense.png",
-
-      tags: ["LLM", "RAG", "Python"],
-
-      github: "https://github.com/Perception12/LitSense",
-
-      links: {
-        demo: null,
-        video: "https://your-demo-video-link",
-        blog: null,
-        gallery: null,
-      },
-    },
-
-    {
-      title: "Ripeness AI",
-      description:
-        "A computer vision system that assesses fruit ripeness to support better purchasing decisions in real-world market scenarios.",
-
-      image: "/projects/ripeness_ai.png",
-
-      tags: ["Computer Vision", "Deep Learning", "Python"],
-
-      github: "https://github.com/Perception12/ripenessAI",
-
-      links: {
-        demo: null,
-        video: null,
-        blog: null,
-        gallery: "/projects/fruit-gallery",
-      },
-    },
-
-    {
-      title: "Airbot",
-      description:
-        "An intelligent chatbot for airline-related queries, bookings, and support, built using LLMs with a conversational interface.",
-
-      image: "/projects/airbot.png",
-
-      tags: ["LLM", "OpenAI", "Gradio", "SQLite"],
-
-      github: "https://github.com/Perception12/Airbot",
-
-      links: {
-        demo: null,
-        video: null,
-        blog: "https://medium.com/@kehindeadejumobi82/building-a-flight-booking-chatbot-with-llm-tool-calling-5f2d055f8423",
-        gallery: null,
-      },
-    },
-  ];
-
   return (
     <section className="py-32 relative overflow-hidden" id="projects">
       {/* Bg glows */}
@@ -189,7 +95,7 @@ export const Projects = () => {
                 </LinkButton>
 
                 {project.links.video && (
-                  <LinkButton link={project.links.video}>
+                  <LinkButton link={project.links.video} inApp={true}>
                     <HugeiconsIcon icon={Play} className="w-5 h-5" /> Watch Demo
                   </LinkButton>
                 )}
@@ -202,7 +108,7 @@ export const Projects = () => {
                 )}
 
                 {project.links.gallery && (
-                  <LinkButton link={project.links.gallery}>
+                  <LinkButton link={project.links.gallery} inApp={true}>
                     <HugeiconsIcon
                       icon={GalleryHorizontalEndFreeIcons}
                       className="w-5 h-5"

@@ -1,18 +1,18 @@
+import { Link } from "react-router";
+
 export const LinkButton = ({
   children,
   type = "default",
+  inApp = false,
   link,
   className,
 }: {
   children?: React.ReactNode;
   type?: "default" | "outline" | "primary";
+  inApp?: boolean;
   link: string;
   className?: "string";
 }) => {
-  const handleExternalClicks = (link: string | URL | undefined) => {
-    window.open(link, "_blank", "noopener, noreferrer");
-  };
-
   const baseClasses =
     "relative overflow-hidden px-6 py-3 w-full text-base rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors duration-300";
 
@@ -25,10 +25,10 @@ export const LinkButton = ({
 
   const classes = `${baseClasses} ${typeClasses[type]} ${className}`;
   return (
-    <button className={classes} onClick={() => handleExternalClicks(link)}>
+    <Link to={link} target={inApp ? "_parent" : "_blank"} className={classes}>
       <span className="relative flex items-center justify-center gap-2">
         {children}
       </span>
-    </button>
+    </Link>
   );
 };
