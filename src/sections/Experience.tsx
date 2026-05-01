@@ -1,61 +1,14 @@
-const experiences = [
-  {
-    period: "2025 — Present",
-    role: "NYSC Corps Member",
-    company: "Nigerian Army",
-    description:
-      "Currently serving while continuing to develop expertise in AI engineering and intelligent systems.",
-    technologies: [],
-    current: true,
-  },
-  {
-    period: "2025",
-    role: "AI Engineer Intern",
-    company: "StryveAI",
-    description:
-      "Worked on developing and integrating AI-driven features, contributing to the design of intelligent systems and experimenting with LLM-based workflows and data pipelines.",
-    technologies: ["Python", "LLMs", "APIs"],
-    current: false,
-  },
-  {
-    period: "2024",
-    role: "IT Intern",
-    company: "MTN Nigeria",
-    description:
-      "Supported IT operations and infrastructure, gaining hands-on experience with enterprise systems, networking, and technical troubleshooting in a large-scale environment.",
-    technologies: ["Networking", "IT Systems"],
-    current: false,
-  },
-  {
-    period: "2024",
-    role: "Field Support Engineer Intern",
-    company: "Broadcore Technologies",
-    description:
-      "Provided technical support and system maintenance, working with hardware and network systems to ensure reliability and uptime.",
-    technologies: ["Networking", "Hardware"],
-    current: false,
-  },
-  {
-    period: "2022 — 2023",
-    role: "AI Researcher",
-    company: "EvonAI",
-    description:
-      "Conducted research and experimentation on machine learning models, exploring approaches for building intelligent systems and analyzing model performance.",
-    technologies: ["Python", "Machine Learning"],
-    current: false,
-  },
-  {
-    period: "2022",
-    role: "Data Scientist Intern",
-    company: "Hamoye",
-    description:
-      "Worked on data analysis and machine learning tasks, developing models and extracting insights from structured datasets.",
-    technologies: ["Python", "Pandas", "Scikit-learn"],
-    current: false,
-  },
-];
+import { experiences } from "@/data/experience";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {ChevronDown, ChevronUp} from "@hugeicons/core-free-icons";
+import { useState } from "react";
 
 export const Experience = () => {
+  const [showAchievements, setShowAchievements] = useState(null);
+  const toggleAchievements = (idx: number) => {
+    setShowAchievements(idx);
+  };
+
   return (
     <section id="experience" className="py-32 relative overflow-hidden">
       <div
@@ -106,7 +59,7 @@ export const Experience = () => {
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1/2 top-0 w-3 h-3 bg-primary rounded-full -translate-x-1/2 ring-4 ring-background z-10">
-                  {exp.current && (
+                  {exp?.current && (
                     <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-75" />
                   )}
                 </div>
@@ -115,7 +68,7 @@ export const Experience = () => {
                 <div
                   className={`pl-8 md:pl-0 ${
                     idx % 2 === 0
-                      ? "md:pr-16 md:text-right"
+                      ? "md:pr-16"
                       : "md:col-start-2 md:pl-16"
                   }`}
                 >
@@ -127,22 +80,60 @@ export const Experience = () => {
                     </span>
                     <h3 className="text-xl font-semibold mt-2">{exp.role}</h3>
                     <p className="text-muted-foreground">{exp.company}</p>
-                    <p className="text-sm text-muted-foreground mt-4">
-                      {exp.description}
-                    </p>
-                    <div
-                      className={`flex flex-wrap gap-2 mt-4 ${
-                        idx % 2 === 0 ? "md:justify-end" : ""
-                      }`}
+                    <p
+                      className="flex gap-2 items-center cursor-pointer hover:text-primary/80 text-sm text-muted-foreground my-6 transition-colors duration-300"
+                      onClick={() => toggleAchievements(idx)}
+                      role="button"
+                      tabIndex={0}
+                      aria-expanded={showAchievements === idx}
                     >
-                      {exp.technologies.map((tech, techIdx) => (
-                        <span
-                          key={techIdx}
-                          className="px-3 py-1 bg-surface text-xs rounded-full text-muted-foreground"
+                      {showAchievements === idx ? "Hide Details" : "View Achievements"}
+                      <HugeiconsIcon
+                        icon={showAchievements === idx ? ChevronUp : ChevronDown}
+                        className="w-5 h-5"
+                      />
+                    </p>
+                    <div className="mt-4 flex flex-col gap-4">
+                      <div
+                        className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${
+                          showAchievements === idx
+                            ? "grid-rows-[1fr]"
+                            : "grid-rows-[0fr]"
+                        }`}
+                      >
+                        <div
+                          className="overflow-hidden min-h-0"
+                          aria-hidden={!(showAchievements === idx)}
                         >
-                          {tech}
-                        </span>
-                      ))}
+                          <div
+                            key={showAchievements === idx ? "open" : "closed"}
+                            className="flex flex-col gap-2 p-2 text-sm text-muted-foreground"
+                          >
+                            {exp.accomplishments.map((achievement, a_idx) => (
+                              <div
+                                key={`$achievement-${a_idx}`}
+                                className="flex gap-2 animate-achievement-in motion-reduce:animate-none"
+                                style={{
+                                  animationDelay: `${a_idx * 200}ms`,
+                                }}
+                              >
+                                <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary/80" />
+                                <p>{achievement}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, techIdx) => (
+                          <span
+                            key={techIdx}
+                            className="rounded-full bg-surface px-3 py-1 text-xs text-muted-foreground"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
