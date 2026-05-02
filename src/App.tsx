@@ -6,6 +6,7 @@ import { Navbar } from "./layout/Navbar";
 import { Footer } from "./layout/Footer";
 import ScrollToHash from "./utils/ScrollToHash";
 import NotFound from "./pages/NotFound";
+import Gallery from "./pages/Gallery";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects/demo/:id" element={<Demo />} />
+          <Route path="/projects/gallery/:id" element={<Gallery />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
