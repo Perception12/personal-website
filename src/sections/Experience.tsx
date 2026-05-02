@@ -95,7 +95,7 @@ export const Experience = () => {
                     </p>
                     <div className="mt-4 flex flex-col gap-4">
                       <div
-                        className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${
+                        className={`grid transition-[grid-template-rows] duration-300 ease-out ${
                           showAchievements === idx
                             ? "grid-rows-[1fr]"
                             : "grid-rows-[0fr]"
@@ -112,10 +112,7 @@ export const Experience = () => {
                             {exp.accomplishments.map((achievement, a_idx) => (
                               <div
                                 key={`$achievement-${a_idx}`}
-                                className="flex gap-2 animate-achievement-in motion-reduce:animate-none"
-                                style={{
-                                  animationDelay: `${a_idx * 200}ms`,
-                                }}
+                                className="flex gap-2"
                               >
                                 <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary/80" />
                                 <p>{achievement}</p>
