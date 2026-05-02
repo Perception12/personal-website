@@ -103,7 +103,7 @@ export const Experience = () => {
                         className="w-5 h-5"
                       />
                     </p>
-                    <div className="mt-4 flex flex-col gap-4">
+                    <div className="flex flex-col gap-4">
                       <div
                         className={`overflow-hidden transition-all duration-300 ease-out ${
                           openItems.includes(idx)
