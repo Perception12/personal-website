@@ -84,7 +84,7 @@ export const Experience = () => {
                     <h3 className="text-xl font-semibold mt-2">{exp.role}</h3>
                     <p className="text-muted-foreground mt-1">{exp.company}</p>
                     <p
-                      className="flex w-fit gap-2 items-center cursor-pointer hover:text-primary/80 text-sm text-muted-foreground my-6 transition-colors duration-300"
+                      className="flex w-fit gap-2 items-center cursor-pointer text-primary hover:text-primary/90 glow-text text-sm my-6 transition-colors duration-300"
                       onClick={() => toggleAchievements(idx)}
                       role="button"
                       onKeyDown={(e) => {
