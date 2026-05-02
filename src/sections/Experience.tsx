@@ -4,9 +4,9 @@ import {ChevronDown, ChevronUp} from "@hugeicons/core-free-icons";
 import { useState } from "react";
 
 export const Experience = () => {
-  const [showAchievements, setShowAchievements] = useState(null);
+  const [showAchievements, setShowAchievements] = useState<number | null>(null);
   const toggleAchievements = (idx: number) => {
-    setShowAchievements(idx);
+    setShowAchievements(prev => prev === idx ? null : idx);
   };
 
   return (
