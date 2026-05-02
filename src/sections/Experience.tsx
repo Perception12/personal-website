@@ -105,10 +105,10 @@ export const Experience = () => {
                     </p>
                     <div className="mt-4 flex flex-col gap-4">
                       <div
-                        className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                        className={`overflow-hidden transition-all duration-300 ease-in ${
                           openItems.includes(idx)
-                            ? "grid-rows-[1fr]"
-                            : "grid-rows-[0fr]"
+                          ? "max-h-96 opacity-100"
+                          : "max-h-0 opacity-0 delay-100"
                         }`}
                       >
                         <div
