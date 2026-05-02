@@ -1,12 +1,15 @@
 import { experiences } from "@/data/experience";
 import { HugeiconsIcon } from "@hugeicons/react";
-import {ChevronDown, ChevronUp} from "@hugeicons/core-free-icons";
+import { ChevronDown, ChevronUp } from "@hugeicons/core-free-icons";
 import { useState } from "react";
 
 export const Experience = () => {
-  const [showAchievements, setShowAchievements] = useState<number | null>(null);
+  const [openItems, setOpenItems] = useState<number[]>([]);
+
   const toggleAchievements = (idx: number) => {
-    setShowAchievements(prev => prev === idx ? null : idx);
+    setOpenItems((prev) =>
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx],
+    );
   };
 
   return (
@@ -41,13 +44,15 @@ export const Experience = () => {
             className="text-muted-foreground
            animate-fade-in animation-delay-200"
           >
-            My journey spans data science, systems engineering, and software development, forming the foundation for designing scalable AI-driven systems.
+            My journey spans data science, systems engineering, and software
+            development, forming the foundation for designing scalable AI-driven
+            systems.
           </p>
         </div>
 
         {/* Timeline */}
         <div className="relative">
-          <div className="timeline-glow absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary/70 via-primary/30 to-transparent md:-translate-x-1/2 shadow-[0_0_25px_rgba(81,112,255,0.8)]" />
+          <div className="timeline-glow absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary/70 via-primary/30 to-transparent md:-translate-x-1/2 shadow-[0_0_20px_rgba(81,112,255,0.35)]" />
 
           {/* Experience Items */}
           <div className="space-y-12">
@@ -67,55 +72,60 @@ export const Experience = () => {
                 {/* Content */}
                 <div
                   className={`pl-8 md:pl-0 ${
-                    idx % 2 === 0
-                      ? "md:pr-16"
-                      : "md:col-start-2 md:pl-16"
+                    idx % 2 === 0 ? "md:pr-16" : "md:col-start-2 md:pl-16"
                   }`}
                 >
                   <div
-                    className={`glass p-6 rounded-2xl border border-primary/30 hover:border-primary/50 transition-all duration-500`}
+                    className={`glass p-6 rounded-2xl border border-primary/30 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(81,112,255,0.15)] transform transition-all duration-500 hover:-translate-y-1`}
                   >
                     <span className="text-sm text-primary font-medium">
                       {exp.period}
                     </span>
                     <h3 className="text-xl font-semibold mt-2">{exp.role}</h3>
-                    <p className="text-muted-foreground">{exp.company}</p>
+                    <p className="text-muted-foreground mt-1">{exp.company}</p>
                     <p
-                      className="flex gap-2 items-center cursor-pointer hover:text-primary/80 text-sm text-muted-foreground my-6 transition-colors duration-300"
+                      className="flex w-fit gap-2 items-center cursor-pointer hover:text-primary/80 text-sm text-muted-foreground my-6 transition-colors duration-300"
                       onClick={() => toggleAchievements(idx)}
                       role="button"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          toggleAchievements(idx);
+                        }
+                      }}
                       tabIndex={0}
-                      aria-expanded={showAchievements === idx}
+                      aria-expanded={openItems.includes(idx)}
                     >
-                      {showAchievements === idx ? "Hide Details" : "View Achievements"}
+                      {openItems.includes(idx)
+                        ? "Hide Details"
+                        : "See Contributions"}
                       <HugeiconsIcon
-                        icon={showAchievements === idx ? ChevronUp : ChevronDown}
+                        icon={openItems.includes(idx) ? ChevronUp : ChevronDown}
                         className="w-5 h-5"
                       />
                     </p>
                     <div className="mt-4 flex flex-col gap-4">
                       <div
                         className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                          showAchievements === idx
+                          openItems.includes(idx)
                             ? "grid-rows-[1fr]"
                             : "grid-rows-[0fr]"
                         }`}
                       >
                         <div
                           className="overflow-hidden min-h-0"
-                          aria-hidden={!(showAchievements === idx)}
+                          aria-hidden={!openItems.includes(idx)}
                         >
                           <div
-                            key={showAchievements === idx ? "open" : "closed"}
+                            key={openItems.includes(idx) ? "open" : "closed"}
                             className="flex flex-col gap-2 p-2 text-sm text-muted-foreground"
                           >
-                            {exp.accomplishments.map((achievement, a_idx) => (
+                            {exp.accomplishments.map((contribution, a_idx) => (
                               <div
-                                key={`$achievement-${a_idx}`}
+                                key={`contribution-${idx}-${a_idx}`}
                                 className="flex gap-2"
                               >
                                 <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary/80" />
-                                <p>{achievement}</p>
+                                <p>{contribution}</p>
                               </div>
                             ))}
                           </div>
