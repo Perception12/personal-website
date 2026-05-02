@@ -23,7 +23,7 @@ const Gallery = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="space-y-8">
           <div className="animate-fade-in group flex items-center gap-4 text-primary">
-            <h1 className="text-5xl md:text-6xl text-secondary-foreground">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl text-secondary-foreground">
               {gallery.title}
             </h1>
 
@@ -31,7 +31,7 @@ const Gallery = () => {
               <a
                 href={gallery.github}
                 target="_blank"
-                className="w-12 h-12 rounded-full glass-strong flex items-center justify-center text-muted-foreground group-hover:text-primary
+                className="w-12 h-12 shrink-0 rounded-full glass-strong flex items-center justify-center text-muted-foreground group-hover:text-primary
                 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
               >
                 <HugeiconsIcon icon={ArrowUpRight} className="w-6 h-6" />
@@ -66,9 +66,9 @@ const Gallery = () => {
               </h1>
               <p className="text-muted-foreground">{section.description}</p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6">
-                {section.images.map((img) => (
-                  <div className="glass p-4 flex flex-col gap-4 rounded-xl group hover:border-primary/20 hover:-translate-y-1 transition-all duration-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {section.images.map((img, img_idx) => (
+                  <div key={`section-img-${idx}-${img_idx}`} className="glass p-4 flex flex-col gap-4 rounded-xl group hover:border-primary/20 hover:-translate-y-1 transition-all duration-300">
                     <div className="aspect-4/3 overflow-hidden rounded-md ">
                       <img
                         src={img.src}
