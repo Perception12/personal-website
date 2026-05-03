@@ -34,7 +34,7 @@ export const Navbar = () => {
       >
         <nav className="container mx-auto px-6 flex items-center justify-between">
           <Link
-            to="/"
+            to="/#"
             
             className="text-xl font-bold tracking-tight hover:text-primary"
           >
