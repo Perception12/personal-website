@@ -112,7 +112,7 @@ export const Hero = () => {
                 <HugeiconsIcon icon={ArrowRight02Icon} className="w-5 h-5" />
               </Button>
 
-              <a href="/cv.pdf" download="Kehinde_Adejumobi_CV.pdf">
+              <a href="/cv.pdf" target="_blank">
                 <AnimatedBorderButton>
                   <HugeiconsIcon icon={Download01Icon} className="w-5 h-5" />{" "}
                   Download CV
